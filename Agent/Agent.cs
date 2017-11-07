@@ -14,13 +14,16 @@ namespace IntelligentVacuum.Agent
         public AgentAction DecideAction(Room room)
         {
 
+           
             AgentAction action;
-            
+
 
             // SENSE
             bool isDirty = room.IsDirty;
+            // looking for a random number 
             Random random = new Random();
-            int randNumber = random.Next(1, 9);
+            //the random number will be between 1-4 
+            int randNumber = random.Next(1, 4);
 
             // PLAN 
             if (!isDirty)
@@ -28,35 +31,21 @@ namespace IntelligentVacuum.Agent
                 switch (randNumber)
                 {
                     case 1:
-                        action = AgentAction.NONE;
-                        break;
-                    case 2:
-                        action = AgentAction.LOOK_LEFT;
-                        break;
-                    case 3:
-                        action = AgentAction.LOOK_RIGHT;
-                        break;
-                    case 4:
-                        action = AgentAction.LOOK_UP;
-                        break;
-                    case 5:
                         action = AgentAction.MOVE_DOWN;
                         break;
-                    case 6:
+                    case 2:
                         action = AgentAction.MOVE_LEFT;
                         break;
-                    case 7:
+                    case 3:
                         action = AgentAction.MOVE_RIGHT;
                         break;
-                    case 8:
+                    case 4:
                         action = AgentAction.MOVE_UP;
                         break;
-                    case 9:
-                        action = AgentAction.LOOK_DOWN;
-                        break;
+
 
                     default:
-                        action = AgentAction.MOVE_RIGHT;
+                        action = AgentAction.NONE;
                         break;
                 }
 
