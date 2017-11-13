@@ -22,8 +22,8 @@ namespace IntelligentVacuum.Agent
             bool isDirty = room.IsDirty;
             // looking for a random number 
             Random random = new Random();
-            //the random number will be between 1-4 
-            int randNumber = random.Next(1, 4);
+            //the random number will be between 1-3 
+            int randNumber = random.Next(1, 3);
 
             // PLAN 
             if (!isDirty)
@@ -39,11 +39,7 @@ namespace IntelligentVacuum.Agent
                     case 3:
                         action = AgentAction.MOVE_RIGHT;
                         break;
-                    case 4:
-                        action = AgentAction.MOVE_UP;
-                        break;
-
-
+                    
                     default:
                         action = AgentAction.NONE;
                         break;
