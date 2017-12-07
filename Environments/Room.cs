@@ -7,6 +7,8 @@ namespace IntelligentVacuum.Environments
         public int YAxis { get; set; }
         public bool IsDirty { get; set; }
 
+        public bool IsLocked { get; set; }
+
         public Room(int x, int y)
         {
             this.XAxis = x;

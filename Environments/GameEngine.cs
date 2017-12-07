@@ -48,12 +48,16 @@ namespace IntelligentVacuum.Environments
         }
         private ActionResult MoveUp(Room room)
         {
-            int y = room.YAxis + 1;
+            int y = room.YAxis - 1;
             ActionResult result = new ActionResult(room);
             if (y >= 0 && y < _map.Rooms.GetLength(1))
             {
-                result.ActionSuccess = true;
-                result.CurrentRoom = _map.Rooms[room.XAxis, y];
+                var targetRoom = _map.Rooms[room.XAxis, y];
+                if (!targetRoom.IsLocked)
+                {
+                    result.CurrentRoom = targetRoom;
+                    result.ActionSuccess = true;
+                }
             }
             return result;
         }
@@ -63,8 +67,12 @@ namespace IntelligentVacuum.Environments
             ActionResult result = new ActionResult(room);
             if (y >= 0 && y < _map.Rooms.GetLength(1))
             {
-                result.ActionSuccess = true;
-                result.CurrentRoom = _map.Rooms[room.XAxis, y];
+                var targetRoom = _map.Rooms[room.XAxis, y];
+                if (!targetRoom.IsLocked)
+                {
+                    result.CurrentRoom = targetRoom;
+                    result.ActionSuccess = true;
+                }
             }
             return result;
         }
@@ -74,8 +82,12 @@ namespace IntelligentVacuum.Environments
             ActionResult result = new ActionResult(room);
             if (x >= 0 && x < _map.Rooms.GetLength(0))
             {
-                result.ActionSuccess = true;
-                result.CurrentRoom = _map.Rooms[x, room.YAxis];
+                var targetRoom = _map.Rooms[x, room.YAxis];
+                if (!targetRoom.IsLocked)
+                {
+                    result.ActionSuccess = true;
+                    result.CurrentRoom = targetRoom;
+                }
             }
             return result;
         }
@@ -85,8 +97,12 @@ namespace IntelligentVacuum.Environments
             ActionResult result = new ActionResult(room);
             if (x >= 0 && x < _map.Rooms.GetLength(0))
             {
-                result.ActionSuccess = true;
-                result.CurrentRoom = _map.Rooms[x, room.YAxis];
+                var targetRoom = _map.Rooms[x, room.YAxis];
+                if (!targetRoom.IsLocked)
+                {
+                    result.ActionSuccess = true;
+                    result.CurrentRoom = targetRoom;
+                }
             }
             return result;
         }
